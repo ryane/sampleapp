@@ -9,7 +9,7 @@ import (
 const version string = "1.0"
 
 func root(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "sampleapp version %s", version)
+	_, _ = fmt.Fprintf(w, "sampleapp version %s", version)
 }
 
 func health(w http.ResponseWriter, r *http.Request) {
@@ -17,7 +17,7 @@ func health(w http.ResponseWriter, r *http.Request) {
 }
 
 func getVersion(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "%s\n", version)
+	_, _ = fmt.Fprintf(w, "%s\n", version)
 }
 
 func main() {
@@ -25,6 +25,7 @@ func main() {
 	http.HandleFunc("/health", health)
 	http.HandleFunc("/version", getVersion)
 	log.Println("starting server")
-	http.ListenAndServe(":8080", nil)
-
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatal(err)
+	}
 }
