@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sampleapp
+  labels:
+    app: sampleapp
+    component: sampleapp
+    release: 1.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sampleapp
+      component: sampleapp
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: sampleapp
+        component: sampleapp
+        release: 1.0
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: sampleapp
+                  component: sampleapp
+                  release: 1.0
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      volumes:
+      - name: ca-bundles
+        configMap:
+          name: ca-bundles
+      containers:
+      - name: app
+        image: nginx:alpine
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: "/etc/ssl/certs"
+          name: ca-bundles
+          readOnly: true
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        - name: metrics
+          containerPort: 9080
+          protocol: TCP
