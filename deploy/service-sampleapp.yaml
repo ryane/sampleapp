@@ -4,7 +4,7 @@ metadata:
   labels:
     component: sampleapp
     app: sampleapp
-    release: v1
+    release: 1.0
   name: sampleapp
 spec:
   ports:

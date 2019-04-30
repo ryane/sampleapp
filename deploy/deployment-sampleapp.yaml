@@ -5,7 +5,7 @@ metadata:
   labels:
     app: sampleapp
     component: sampleapp
-    release: v1
+    release: 1.0
 spec:
   replicas: 1
   selector:
@@ -19,7 +19,7 @@ spec:
       labels:
         app: sampleapp
         component: sampleapp
-        release: v1
+        release: 1.0
     spec:
       affinity:
         podAntiAffinity:
@@ -29,7 +29,7 @@ spec:
                 matchLabels:
                   app: sampleapp
                   component: sampleapp
-                  release: v1
+                  release: 1.0
               topologyKey: kubernetes.io/hostname
             weight: 100
       volumes:
@@ -37,15 +37,17 @@ spec:
         configMap:
           name: ca-bundles
       containers:
-      - name: http
+      - name: app
         image: nginx:alpine
         imagePullPolicy: IfNotPresent
-        command: []
         volumeMounts:
         - mountPath: "/etc/ssl/certs"
           name: ca-bundles
           readOnly: true
         ports:
+        - name: metrics
+          containerPort: 9080
+          protocol: TCP
         - name: http
           containerPort: 8080
           protocol: TCP
