@@ -46,6 +46,6 @@ spec:
           name: ca-bundles
           readOnly: true
         ports:
-        - name: metrics
-          containerPort: 9080
+        - name: http
+          containerPort: 8080
           protocol: TCP
