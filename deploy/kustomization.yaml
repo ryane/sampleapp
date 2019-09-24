@@ -1,0 +1,4 @@
+resources:
+- service-account.yaml
+- service-api.yaml
+- deployment-api.yaml
