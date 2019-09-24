@@ -37,9 +37,9 @@ spec:
         configMap:
           name: ca-bundles
       containers:
-      - name: api-server
-        image: nginx:alpine
-        imagePullPolicy: IfNotPresent
+      - name: apiserver
+        image: nginx:latest
+        imagePullPolicy: Always
         command: []
         volumeMounts:
         - mountPath: "/etc/ssl/certs"
@@ -48,7 +48,4 @@ spec:
         ports:
         - name: http
           containerPort: 8080
-          protocol: TCP
-        - name: metrics
-          containerPort: 8900
           protocol: TCP
