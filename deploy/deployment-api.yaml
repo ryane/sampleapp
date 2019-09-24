@@ -37,7 +37,7 @@ spec:
         configMap:
           name: ca-bundles
       containers:
-      - name: apiserver
+      - name: api
         image: nginx:latest
         imagePullPolicy: Always
         command: []
