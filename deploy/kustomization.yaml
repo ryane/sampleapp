@@ -1,4 +1,5 @@
 resources:
-- deployment-api.yaml
 - service-account.yaml
 - service-api.yaml
+- persistent-volume-data.yaml
+- deployment-api.yaml
