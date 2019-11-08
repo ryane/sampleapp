@@ -11,3 +11,7 @@ spec:
   source:
     path: apps
     repoURL: https://github.com/ryane/sampleapp.git
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
