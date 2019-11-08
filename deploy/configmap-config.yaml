@@ -7,4 +7,4 @@ metadata:
   name: config
 data:
   data: |
-    url: https://example.com/testing
+    url: https://example.com/
