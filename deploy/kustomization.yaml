@@ -1,6 +1,6 @@
 resources:
-- deployment-sidecar.yaml
 - deployment-api.yaml
+- deployment-sidecar.yaml
 - service-account.yaml
 - service-api.yaml
 - service-sidecar.yaml
