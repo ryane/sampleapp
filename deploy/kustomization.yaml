@@ -1,0 +1,8 @@
+resources:
+- persistent-volume-datavol.yaml
+- deployment-sidecar.yaml
+- deployment-api.yaml
+- service-account.yaml
+- service-sidecar.yaml
+- service-api.yaml
+- configmap-config.yaml
