@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api
+  name: sidecar
   labels:
     app: sampleapp
-    component: api
+    component: sidecar
     release: v1
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: sampleapp
-      component: api
+      component: sidecar
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
         app: sampleapp
-        component: api
+        component: sidecar
         release: v1
     spec:
       affinity:
@@ -28,7 +28,7 @@ spec:
               labelSelector:
                 matchLabels:
                   app: sampleapp
-                  component: api
+                  component: sidecar
                   release: v1
               topologyKey: kubernetes.io/hostname
             weight: 100
@@ -51,18 +51,7 @@ spec:
         - mountPath: /etc/ssl/certs
           name: ca-bundles
           readOnly: true
-        - mountPath: /config
-          name: config
-          readOnly: true
-          subPath: 
-        - mountPath: /data
-          name: datavol
-          readOnly: false
-          subPath: test
         ports:
         - name: http
           containerPort: 80
-          protocol: TCP
-        - name: metrics
-          containerPort: 9080
           protocol: TCP
