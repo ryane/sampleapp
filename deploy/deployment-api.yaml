@@ -33,9 +33,6 @@ spec:
               topologyKey: kubernetes.io/hostname
             weight: 100
       volumes:
-      - name: ca-bundles
-        configMap:
-          name: ca-bundles
       - name: config
         configMap:
           name: config
@@ -48,9 +45,6 @@ spec:
         imagePullPolicy: Always
         command: []
         volumeMounts:
-        - mountPath: /etc/ssl/certs
-          name: ca-bundles
-          readOnly: true
         - mountPath: /config
           name: config
           readOnly: true
