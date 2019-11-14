@@ -41,7 +41,7 @@ spec:
           claimName: datavol
       containers:
       - name: http
-        image: ryane/sampleapp:8414220
+        image: ryane/sampleapp:kubecon
         imagePullPolicy: Always
         command: []
         volumeMounts:

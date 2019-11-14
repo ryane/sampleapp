@@ -1,6 +1,6 @@
 resources:
-- service-api.yaml
 - service-sidecar.yaml
+- service-api.yaml
 - ingress-kruise-demo.com.yaml
 - configmap-config.yaml
 - persistent-volume-datavol.yaml
