@@ -49,10 +49,6 @@ spec:
           name: config
           readOnly: true
           subPath: 
-        - mountPath: /data
-          name: datavol
-          readOnly: false
-          subPath: test
         ports:
         - name: http
           containerPort: 80

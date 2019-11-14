@@ -45,6 +45,10 @@ spec:
         imagePullPolicy: Always
         command: []
         volumeMounts:
+        - mountPath: /data
+          name: datavol
+          readOnly: true
+          subPath: 
         ports:
         - name: http
           containerPort: 80
