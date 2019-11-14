@@ -1,0 +1,9 @@
+resources:
+- persistent-volume-datavol.yaml
+- deployment-api.yaml
+- deployment-sidecar.yaml
+- service-account.yaml
+- service-api.yaml
+- service-sidecar.yaml
+- ingress-example.com.yaml
+- configmap-config.yaml
