@@ -41,7 +41,7 @@ spec:
           claimName: datavol
       containers:
       - name: http
-        image: kelseyhightower/monolith:1.0.0
+        image: ryane/sampleapp:7b04e8e
         imagePullPolicy: Always
         command: []
         volumeMounts:

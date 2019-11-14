@@ -1,4 +1,5 @@
 resources:
+- deployment-api.yaml
 - deployment-sidecar.yaml
 - service-account.yaml
 - service-api.yaml
@@ -6,4 +7,3 @@ resources:
 - ingress-kruise-demo.com.yaml
 - configmap-config.yaml
 - persistent-volume-datavol.yaml
-- deployment-api.yaml
