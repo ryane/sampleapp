@@ -1,9 +1,9 @@
 resources:
+- deployment-sidecar.yaml
+- service-account.yaml
 - service-sidecar.yaml
-- service-example.com.yaml
+- service-api.yaml
+- service-kruise-demo.com.yaml
 - configmap-config.yaml
 - persistent-volume-datavol.yaml
 - deployment-api.yaml
-- deployment-sidecar.yaml
-- service-account.yaml
-- service-api.yaml
