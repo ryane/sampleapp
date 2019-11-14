@@ -41,7 +41,7 @@ spec:
           claimName: datavol
       containers:
       - name: http
-        image: nginx:alpine
+        image: kelseyhightower/monolith:1.0.0
         imagePullPolicy: Always
         command: []
         volumeMounts:
@@ -56,7 +56,4 @@ spec:
         ports:
         - name: http
           containerPort: 80
-          protocol: TCP
-        - name: metrics
-          containerPort: 9080
           protocol: TCP

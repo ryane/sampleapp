@@ -12,9 +12,10 @@ spec:
     port: 8080
     protocol: TCP
     targetPort: 80
-  - name: metrics
-    port: 9080
+  - name: health
+    port: 8081
     protocol: TCP
+    targetPort: 81
   selector:
     app: sampleapp
     component: api
