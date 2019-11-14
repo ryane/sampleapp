@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 const (
@@ -45,7 +46,7 @@ func getMessage() string {
 			log.Printf("error reading message config: %s", err)
 			return defaultMsg
 		}
-		return string(data)
+		return strings.TrimSuffix(string(data), "\n")
 	}
 	return defaultMsg
 }

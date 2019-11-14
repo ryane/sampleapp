@@ -10,3 +10,5 @@ docker:
 
 docker.push: docker
 	docker push ${IMAGE_REPO}/sampleapp:${GIT_SHA}
+	docker tag ${IMAGE_REPO}/sampleapp:${GIT_SHA} ${IMAGE_REPO}/sampleapp:kubecon
+	docker push ${IMAGE_REPO}/sampleapp:kubecon
