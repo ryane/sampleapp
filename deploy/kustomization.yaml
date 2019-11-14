@@ -2,7 +2,7 @@ resources:
 - service-sidecar.yaml
 - ingress-kruise-demo.com.yaml
 - configmap-config.yaml
-- deployment-sidecar.yaml
 - deployment-api.yaml
+- deployment-sidecar.yaml
 - service-account.yaml
 - service-api.yaml
