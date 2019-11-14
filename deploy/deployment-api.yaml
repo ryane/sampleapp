@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  labels:
+    app: sampleapp
+    component: api
+    release: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sampleapp
+      component: api
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sampleapp
+        component: api
+        release: v1
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: sampleapp
+                  component: api
+                  release: v1
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      volumes:
+      - name: config
+        configMap:
+          name: config
+      - name: datavol
+        persistentVolumeClaim:
+          claimName: datavol
+      containers:
+      - name: http
+        image: ryane/sampleapp:7a34fb5
+        imagePullPolicy: Always
+        command: []
+        volumeMounts:
+        - mountPath: /config
+          name: config
+          readOnly: true
+          subPath: 
+        - mountPath: /data
+          name: datavol
+          readOnly: false
+          subPath: test
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        - name: metrics
+          containerPort: 9080
+          protocol: TCP
