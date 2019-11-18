@@ -38,7 +38,7 @@ spec:
           name: config
       containers:
       - name: http
-        image: ryane/sampleapp:kubecon
+        image: ryane/sampleapp:7a34fb5
         imagePullPolicy: Always
         command: []
         volumeMounts:
