@@ -1,0 +1,8 @@
+resources:
+- service-account.yaml
+- service-api.yaml
+- service-sidecar.yaml
+- ingress-app.kruise-demo.com.yaml
+- configmap-config.yaml
+- deployment-sidecar.yaml
+- deployment-api.yaml
