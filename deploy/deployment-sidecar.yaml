@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sidecar
+  labels:
+    app: sampleapp
+    component: sidecar
+    release: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sampleapp
+      component: sidecar
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sampleapp
+        component: sidecar
+        release: v1
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: sampleapp
+                  component: sidecar
+                  release: v1
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      volumes:
+      - name: config
+        configMap:
+          name: config
+      containers:
+      - name: http
+        image: nginx:alpine
+        imagePullPolicy: Always
+        command: []
+        volumeMounts:
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
