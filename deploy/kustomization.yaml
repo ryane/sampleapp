@@ -1,8 +1,0 @@
-resources:
-- ingress-app.kruise-demo.com.yaml
-- configmap-config.yaml
-- deployment-api.yaml
-- deployment-sidecar.yaml
-- service-account.yaml
-- service-sidecar.yaml
-- service-api.yaml
